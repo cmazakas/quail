@@ -7,5 +7,6 @@
 // Official repository: https://github.com/LeonineKing1199/quail
 //
 
-#define CATCH_CONFIG_MAIN
-#include <catch2/catch.hpp>
+namespace quail
+{
+}

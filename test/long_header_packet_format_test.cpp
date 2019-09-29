@@ -7,5 +7,14 @@
 // Official repository: https://github.com/LeonineKing1199/quail
 //
 
-#define CATCH_CONFIG_MAIN
+#include <quail/packet_formats/long_header.hpp>
+#include <boost/asio/buffer.hpp>
+
 #include <catch2/catch.hpp>
+
+TEST_CASE("long_header_packet_format_test")
+{
+  SECTION("we should be able to parse a well-formed long header packet into its constituent parts")
+  {
+  }
+}

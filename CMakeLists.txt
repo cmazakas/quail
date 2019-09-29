@@ -34,7 +34,7 @@ add_library(
   INTERFACE
 )
 
-target_compile_features(quail INTERFACE cxx_std_14)
+target_compile_features(quail INTERFACE cxx_std_17)
 
 if (MSVC)
   # Win10
@@ -69,6 +69,8 @@ if (BUILD_TESTING)
     quail_tests
 
     test/main.cpp
+
+    test/long_header_packet_format_test.cpp
   )
 
   target_link_libraries(
