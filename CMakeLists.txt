@@ -28,6 +28,8 @@ find_package(
     headers
 )
 
+find_package(OpenSSL 1.1.1 REQUIRED)
+
 add_library(
   quail
 
@@ -58,6 +60,8 @@ target_link_libraries(
 
   INTERFACE
     Boost::headers
+    OpenSSL::SSL
+    OpenSSL::Crypto
 )
 
 if (BUILD_TESTING)

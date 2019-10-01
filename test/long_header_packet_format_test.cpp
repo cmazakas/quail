@@ -7,14 +7,15 @@
 // Official repository: https://github.com/LeonineKing1199/quail
 //
 
-#include <quail/packet_formats/long_header.hpp>
+#include <quail/packet_formats/initial.hpp>
 #include <boost/asio/buffer.hpp>
 
 #include <catch2/catch.hpp>
 
 TEST_CASE("long_header_packet_format_test")
 {
-  SECTION("we should be able to parse a well-formed long header packet into its constituent parts")
+  SECTION("we should be able to parse a well-formed initial packet into its constituent parts")
   {
+    auto const* const data = "\x15";
   }
 }
