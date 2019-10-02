@@ -74,7 +74,7 @@ if (BUILD_TESTING)
 
     test/main.cpp
 
-    test/long_header_packet_format_test.cpp
+    test/hkdf_extract.cpp
   )
 
   target_link_libraries(
