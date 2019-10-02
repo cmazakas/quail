@@ -3,4 +3,4 @@ OpenSSL/1.1.1@conan/stable
 Catch2/2.9.2@catchorg/stable
 
 [generators]
-cmake
+cmake_paths
