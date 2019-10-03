@@ -9,11 +9,9 @@
 
 #include <quail/hkdf_extract.hpp>
 
-#include <boost/asio/buffer.hpp>
-
 #include <vector>
 #include <algorithm>
-#include <iostream>
+#include <array>
 
 #include <catch2/catch.hpp>
 
@@ -28,15 +26,10 @@ TEST_CASE("hkdf_extract")
     auto client_dst_connection_id =
       std::vector<unsigned char>{0x83, 0x94, 0xc8, 0xf0, 0x3e, 0x51, 0x57, 0x08};
 
-    auto initial_secret_buff = std::vector<unsigned char>();
+    auto initial_secret = std::array<unsigned char, 32>{0};
 
-    auto vec_buff = boost::asio::dynamic_buffer(initial_secret_buff);
-    REQUIRE(vec_buff.size() == 0);
-
-    auto const res = quail::hkdf_extract(initial_salt, client_dst_connection_id, vec_buff);
+    auto const res = quail::hkdf_extract(initial_salt, client_dst_connection_id, initial_secret);
     REQUIRE(res == 1);
-
-    auto const initial_secret = boost::spans::span(initial_secret_buff.data(), vec_buff.size());
 
     auto const expected_initial_secret =
       std::vector<unsigned char>{0x52, 0x4e, 0x37, 0x4c, 0x6d, 0xa8, 0xcf, 0x8b, 0x49, 0x6f, 0x4b,

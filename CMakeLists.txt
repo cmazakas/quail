@@ -33,24 +33,24 @@ find_package(OpenSSL 1.1.1 REQUIRED)
 add_library(
   quail
 
-  INTERFACE
+  src/hkdf_extract.cpp
 )
 
-target_compile_features(quail INTERFACE cxx_std_17)
+target_compile_features(quail PUBLIC cxx_std_17)
 
 if (MSVC)
   # Win10
   #
   set(QUAIL_WIN_ARCH "0x0A00" CACHE STRING "Asio-specific Win architecture value (default: Win10)")
-  target_compile_definitions(quail INTERFACE "_WIN32_WINNT=${QUAIL_WIN_ARCH}")
+  target_compile_definitions(quail PUBLIC "_WIN32_WINNT=${QUAIL_WIN_ARCH}")
 
-  target_compile_options(quail INTERFACE "/bigobj")
+  target_compile_options(quail PUBLIC "/bigobj")
 endif()
 
 target_include_directories(
   quail
 
-  INTERFACE
+  PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/include>
 )
@@ -58,7 +58,7 @@ target_include_directories(
 target_link_libraries(
   quail
 
-  INTERFACE
+  PUBLIC
     Boost::headers
     OpenSSL::SSL
     OpenSSL::Crypto
