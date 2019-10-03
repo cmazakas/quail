@@ -10,7 +10,7 @@ namespace quail
 auto
 hkdf_extract(boost::spans::span<unsigned char>     salt,
              boost::spans::span<unsigned char>     ikm,
-             boost::spans::span<unsigned char, 32> out_key) -> int
+             boost::spans::span<unsigned char, 32> out_key) noexcept -> int
 {
   auto ptr = std::unique_ptr<EVP_PKEY_CTX, decltype(&EVP_PKEY_CTX_free)>(
     EVP_PKEY_CTX_new_id(EVP_PKEY_HKDF, nullptr), &EVP_PKEY_CTX_free);
