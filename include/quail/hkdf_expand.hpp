@@ -12,8 +12,8 @@
 namespace quail
 {
 auto
-hkdf_extract(boost::spans::span<unsigned char>     salt,
-             boost::spans::span<unsigned char>     ikm,
-             boost::spans::span<unsigned char, 32> out_key) noexcept -> int;
+hkdf_expand(boost::spans::span<unsigned char>     prk,
+            boost::spans::span<unsigned char>     info,
+            boost::spans::span<unsigned char, 32> out_key) noexcept -> int;
 
 } // namespace quail

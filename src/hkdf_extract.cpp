@@ -33,7 +33,7 @@ hkdf_extract(boost::spans::span<unsigned char>     salt,
   res = EVP_PKEY_CTX_set1_hkdf_key(pctx, ikm.data(), static_cast<int>(ikm.size()));
   if (res < 1) { return res; }
 
-  auto keylen = std::size_t{0};
+  auto keylen = out_key.size();
   res         = EVP_PKEY_derive(pctx, out_key.data(), std::addressof(keylen));
   if (res < 1) { return res; }
 

@@ -34,6 +34,7 @@ add_library(
   quail
 
   src/hkdf_extract.cpp
+  src/hkdf_expand.cpp
 )
 
 target_compile_features(quail PUBLIC cxx_std_17)
@@ -75,6 +76,7 @@ if (BUILD_TESTING)
     test/main.cpp
 
     test/hkdf_extract.cpp
+    test/hkdf_expand.cpp
   )
 
   target_link_libraries(
