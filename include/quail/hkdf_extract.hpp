@@ -7,7 +7,7 @@
 // Official repository: https://github.com/LeonineKing1199/quail
 //
 
-#include <quail/polyfills/span.hpp>
+#include <boost/span/span.hpp>
 
 namespace quail
 {
