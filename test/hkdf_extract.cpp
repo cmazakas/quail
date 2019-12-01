@@ -7,6 +7,8 @@
 // Official repository: https://github.com/LeonineKing1199/quail
 //
 
+#define CATCH_CONFIG_MAIN
+
 #include <quail/hkdf_extract.hpp>
 
 #include <vector>

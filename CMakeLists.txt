@@ -7,7 +7,7 @@
 # Official repository: https://github.com/LeonineKing1199/quail
 #
 
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.15)
 
 project(
   quail
@@ -22,21 +22,11 @@ project(
     "QUIC transport protocol written in Boost.Asio"
 )
 
-find_package(
-  Boost 1.71
-  REQUIRED
-    headers
-)
-
+find_package(Boost 1.71 REQUIRED)
 find_package(OpenSSL 1.1.1 REQUIRED)
 
-add_library(
-  quail
-
-  src/hkdf_extract.cpp
-  src/hkdf_expand.cpp
-)
-
+add_library(quail)
+add_subdirectory(src)
 target_compile_features(quail PUBLIC cxx_std_17)
 
 if (MSVC)
@@ -65,28 +55,7 @@ target_link_libraries(
     OpenSSL::Crypto
 )
 
+include(CTest)
 if (BUILD_TESTING)
-  include(CTest)
-
-  find_package(Catch2 CONFIG REQUIRED)
-
-  add_executable(
-    quail_tests
-
-    test/main.cpp
-
-    test/hkdf_extract.cpp
-    test/hkdf_expand.cpp
-  )
-
-  target_link_libraries(
-    quail_tests
-
-    PRIVATE
-      quail
-      Catch2::Catch2
-  )
-
-  include(Catch)
-  catch_discover_tests(quail_tests)
+  add_subdirectory(test)
 endif()
