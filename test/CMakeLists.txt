@@ -10,3 +10,4 @@ endfunction()
 
 quail_add_test(hkdf_expand)
 quail_add_test(hkdf_extract)
+quail_add_test(version_negotiation_packet)
